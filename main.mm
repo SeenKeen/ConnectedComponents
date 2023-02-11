@@ -70,5 +70,4 @@ int main(int argv, char** args)
     [NSApp release];      // release the app 
     [pool release];       // release the pool
     return EXIT_SUCCESS;
-    
 }
