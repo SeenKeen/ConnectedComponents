@@ -18,6 +18,8 @@ add_executable(Cxx11Test
                 component_finder/dfs_finder.cc
                 component_finder/dsu_finder.h
                 component_finder/dsu_finder.cc
+                data_structures/dsu2.h
+                data_structures/dsu2.cc
                 components_generator.h
                 components_generator.cc
                 grid_window.h

@@ -20,6 +20,7 @@
 #include "grid_window.h"
 #include "components_generator.h"
 #include "component_finder/dfs_finder.h"
+#include "component_finder/dsu_finder.h"
 #include "util.h"
 
 #import <Cocoa/Cocoa.h>
@@ -54,7 +55,7 @@ int main(int argv, char** args)
 
     int components = std::stoi(std::string {args[1]});
     auto grid = GenerateGrid(200, 200, components);
-    component_finder::DfsFinder finder;
+    component_finder::DsuFinder finder;
     auto comps = finder.FindComponents(grid);
 
     // set up the window and drawing mechanism
