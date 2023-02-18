@@ -27,11 +27,13 @@ std::vector<std::vector<int>> DsuFinder::FindComponents(const BinaryGrid& grid) 
   int id = 0;
   for (int r = 0; r < grid.Height(); ++r) {
     for (int c = 0; c < grid.Width(); ++c) {
-      auto root = dsu.Root({r, c});
-      if (!roots.count(root)) {
-        roots[root] = ++id;
+      if (grid.Get(r, c)) {
+        auto root = dsu.Root({r, c});
+        if (!roots.count(root)) {
+            roots[root] = ++id;
+        }
+        result[r][c] = roots[root];
       }
-      result[r][c] = roots[root];
     }
   }
   return result;
