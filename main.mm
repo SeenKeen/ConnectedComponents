@@ -16,6 +16,8 @@
 #include <memory>
 #include <map>
 
+#include <boost/program_options.hpp>
+
 #include "color_grid.h"
 #include "grid_window.h"
 #include "components_generator.h"
@@ -46,6 +48,17 @@ std::vector<std::vector<Color>> AssignColors(std::vector<std::vector<int>> compo
 
 int main(int argv, char** args)
 {
+    namespace po = boost::program_options;
+    po::options_description desc("Allowed options");
+    desc.add_options()
+        ("help", "produce help message")
+        ("compression", po::value<int>(), "set compression level")
+    ;
+
+    po::variables_map vm;
+    po::store(po::parse_command_line(argv, args, desc), vm);
+    po::notify(vm);   
+
     NSLog(@"Hello");
     // create the autorelease pool
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
@@ -56,6 +69,7 @@ int main(int argv, char** args)
     int components = std::stoi(std::string {args[1]});
     auto grid = GenerateGrid(200, 200, components);
     component_finder::DsuFinder finder;
+    
     auto comps = finder.FindComponents(grid);
 
     // set up the window and drawing mechanism

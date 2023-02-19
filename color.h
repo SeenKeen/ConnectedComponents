@@ -1,5 +1,7 @@
 #pragma once
 
+#include <boost/program_options.hpp>
+
 struct Color {
     float r = 0;
     float g = 0;

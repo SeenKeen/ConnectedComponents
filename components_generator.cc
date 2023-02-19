@@ -1,5 +1,7 @@
 #include "components_generator.h"
 
+#include "data_structures/compressed_binary_grid.h"
+
 BinaryGrid GenerateGrid(int width, int height, int components, float max_percent, float alpha) {
   int total_cells = width * height;
   int cells_to_fill = max_percent * total_cells;
